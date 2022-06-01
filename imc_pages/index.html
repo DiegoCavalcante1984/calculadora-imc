@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;1,100&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="reset.css">
+  <title>Calculadora IMC</title>
+</head>
+<body>
+    <div class="content">
+      <h1 class="title">calculadora IMC</h1>
+      <h2 class="subtitle">Resultado</h2>
+      <div class="res">
+       
+      </div>
+      
+      
+      <div class="data">
+        <label for="name">Nome <input type="text" id="name"></label>
+        <label for="height">Altura <input type="number"id="height" placeholder="Ex: 1.70"></label>
+        <label for="weight">Peso <input type="number" id="weight" placeholder="Ex: 80"></label>
+      </div>
+      <button class="btn">calcular</button>
+
+    </div>
+    <script>
+     
+      var btn = document.querySelector(".btn")
+        
+        function imc(){
+          var height=document.getElementById("height").value
+          var weigth = document.getElementById("weight").value
+          var name = document.getElementById("name").value
+          var result = document.querySelector(".res")
+          var imc = weigth/(height*height)
+         
+         
+          if(name == '' || weigth == '' || height == ''){
+            result.textContent='Preencha todos os campos!!!!'
+            result.style.color = 'red'
+            result.style.paddingTop = "20px";
+          }
+          else if(imc < 18.5){
+            var imc = weigth/(height*height)
+            result.textContent= `${name}, seu imc é de ${imc.toFixed(2)} e está abaixo do recomendado`
+            result.style.color = 'red';
+          }
+          else if(imc < 25){
+            var imc = weigth/(height*height)
+            result.textContent=`${name}, seu imc é de ${imc.toFixed(2)} e é considerado normal`
+            result.style.color='green'
+          }
+          else if(imc < 29.9){
+            var imc = weigth/(height*height)
+            result.textContent=`${name}, seu imc é de ${imc.toFixed(2)} e está com sobrepeso`
+            result.style.color='orange'
+          }
+          else if(imc < 35){
+            var imc = weigth/(height*height)
+            result.textContent=`${name}, seu imc é de ${imc.toFixed(2)} e está com obesidade grau 1 !!!!`
+            result.style.color='red'
+          }
+          else if(imc < 40){
+            var imc = weigth/(height*height)
+            result.textContent=`${name}, seu imc é de ${imc.toFixed(2)} e está com obesidade grau 2 !!!!`
+            result.style.color='red'
+          }
+          else if(imc >= 41){
+            var imc = weigth/(height*height)
+            result.textContent=`${name}, seu imc é de ${imc.toFixed(2)} e está com obesidade grau 3 !!!!`
+            result.style.color='red'
+          }
+          //else{
+            //var imc = weigth/(height*height)
+            //result.textContent= `${name}, seu imc é de ${imc.toFixed(2)}`
+           // result.style.color = ' #e5e5e5';
+          //}
+          
+        }
+          btn.addEventListener("click",imc);
+      
+        
+        
+        
+
+      
+    </script>
+</body>
+</html>
